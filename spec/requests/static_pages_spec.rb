@@ -34,4 +34,15 @@ describe "StaticPages" do
       expect(page).to have_title('iApp | About')
     end    
   end
+  
+  describe "Contact page" do    
+    it "should have the content 'contact'" do
+      visit '/static_pages/contact'
+      expect(page).to have_content('contact')
+    end
+    it "should have the right title 'Contact'" do
+      visit '/static_pages/contact'
+      expect(page).to have_title('iApp | Contact')
+    end    
+  end
 end
