@@ -4,6 +4,9 @@ ruby '2.0.0'
 gem 'rails', '4.0.0'
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'bcrypt-ruby', '3.0.1'
+gem 'faker', '1.1.2'
+gem 'will_paginate', '3.0.4'
+gem 'bootstrap-will_paginate', '0.0.9'
 gem 'haml-rails'
 gem 'sass-rails', '4.0.0'
 gem 'uglifier', '2.1.1'
@@ -13,6 +16,7 @@ gem 'turbolinks', '1.1.1'
 gem 'jbuilder', '1.0.2'
 gem 'pg','0.15.1'
 
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'guard-rspec', '2.5.0'
@@ -20,6 +24,7 @@ group :development, :test do
   gem 'spork-rails', '4.0.0'
   gem 'guard-spork', '1.5.0'
   gem 'childprocess', '0.3.6'
+#  gem 'thin'
 end
 
 group :test do
