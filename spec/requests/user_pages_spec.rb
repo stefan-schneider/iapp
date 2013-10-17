@@ -99,7 +99,7 @@ describe "User pages" do
     let(:user) { FactoryGirl.create(:user) }
     let!(:m1) { FactoryGirl.create(:micropost, user: user, content: "Content") }
     let!(:m2) { FactoryGirl.create(:micropost, user: user, content: "goes here") }
-        
+            
     before { visit user_path(user) }
     
     it { should have_content(user.name) }
@@ -108,7 +108,26 @@ describe "User pages" do
     describe "microposts" do
       it { should have_content(m1.content) }
       it { should have_content(m2.content) }
-      it { should have_content(user.microposts.count) }
+      it { should have_content(user.microposts.count) }        
+      
+      before do
+        sign_in user
+        visit root_path
+      end
+      
+      include ActionView::Helpers::TextHelper             
+      it "should pluralize post numbers" do
+        page.should have_content(pluralize(user.microposts.count, 'micropost'))
+      end
+            
+      describe "pagination" do 
+        it "should paginate the feed" do
+          30.times { FactoryGirl.create(:micropost, user: user, content: "Tweet") } 
+          visit root_path
+          page.should have_selector("div.pagination")
+        end
+      end
+            
     end
   end
   

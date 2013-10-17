@@ -1,16 +1,4 @@
 - if signed_in?
-  .row
-    %aside.span4
-      %section
-        = render 'shared/user_info'
-      %section
-        = render 'shared/micropost_form'  
-    .span8
-      %h3 Micropost Feed
-      = render 'shared/feed'
+  = render 'static_pages/signed_in_page'
 - else
-  .center.hero-unit
-    %h1 iApp
-    %p This is the home page of the iApp tutorial.
-
-    = link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary"
+  = render 'static_pages/non_signed_in_page'

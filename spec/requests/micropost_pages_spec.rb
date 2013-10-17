@@ -40,4 +40,20 @@ describe "Micropost pages" do
       end
     end
   end
+  
+  describe "foreign users" do
+    let(:foreign_user) { FactoryGirl.create(:user) }
+    
+    describe "microposts" do
+      before do
+        FactoryGirl.create(:micropost, user: foreign_user, content: "Foreign post")
+        visit user_path(foreign_user)
+      end
+    
+      it "should not have a delete link" do
+        expect(page).to_not have_link('delete')
+      end
+    end
+  end
+    
 end
